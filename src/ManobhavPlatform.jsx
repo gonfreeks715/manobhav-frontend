@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useRef } from "react";
 
 // ============================================================
 // MANOBHAV - MCA E-Consultation Platform
@@ -305,8 +305,7 @@ const WordCloudModule = () => {
   const [uploadedTexts, setUploadedTexts] = useState([]); // only current file
   const [fileName, setFileName] = useState("");
   const [loading, setLoading] = useState(false);
-  const [wordCount, setWordCount] = useState(0);
-
+  
   const parseCSV = (text) => {
     const lines = text.split("\n").filter(Boolean);
     if (lines.length < 2) return [];
@@ -1586,7 +1585,7 @@ const SummaryModule = () => {
   const [summaries, setSummaries] = useState(null);
   const [stats, setStats]         = useState(null);   // themes + keywords from pipeline
   const [loading, setLoading]     = useState(false);
-  const [mode, setMode]           = useState("combined");
+  const [mode, setMode] = useState("combined"); // eslint-disable-line no-unused-vars
   const [aiSource, setAiSource]   = useState("");
 
   const handleFile = (content) => setText(content);
@@ -2025,7 +2024,7 @@ const SummaryModule = () => {
 // ════════════════════════════════════════════════════════════
 const TrendModule = () => {
   const [timeframe, setTimeframe] = useState("week");
-  const [comments] = useState(db.get("comments") || []);
+  const [comments] = useState(db.get("comments") || []); // eslint-disable-line no-unused-vars
 
   const generateTrendData = () => {
     const labels = timeframe === "week"
@@ -2044,7 +2043,7 @@ const TrendModule = () => {
   const [trendData] = useState(generateTrendData());
 
   const max = Math.max(...trendData.flatMap(d => [d.positive, d.negative, d.neutral])) + 5;
-  const barW = 240 / trendData.length;
+  const barW = 240 / trendData.length; // eslint-disable-line no-unused-vars
 
   const allComments = db.get("comments") || [];
   const totalPos = allComments.filter(c => c.sentiment === "positive").length;
